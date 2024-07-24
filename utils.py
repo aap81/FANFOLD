@@ -48,32 +48,32 @@ def edge_index_to_adjacency_matrix(edge_index, num_nodes):
       
     return adjacency_matrix
 
-def adj_to_image(A, name):
-    A=A.detach().numpy()
-    block_size = 20
+# def adj_to_image(A, name):
+#     A=A.detach().numpy()
+#     block_size = 20
 
-    # 放大矩阵以便更清晰显示
-    scaled_matrix = np.kron(A, np.ones((block_size, block_size), dtype=np.uint8))
+#     # 放大矩阵以便更清晰显示
+#     scaled_matrix = np.kron(A, np.ones((block_size, block_size), dtype=np.uint8))
 
-    # 将矩阵转换为灰度图像
-    image_array = scaled_matrix * 255  # 将 0 和 1 转换为灰度值范围内的值
-    image = Image.fromarray(image_array.astype(np.uint8), 'L')
+#     # 将矩阵转换为灰度图像
+#     image_array = scaled_matrix * 255  # 将 0 和 1 转换为灰度值范围内的值
+#     image = Image.fromarray(image_array.astype(np.uint8), 'L')
 
-    # 保存灰度图像
-    image.save('{}.png'.format(name))
+#     # 保存灰度图像
+#     image.save('{}.png'.format(name))
 
-def read_auc():
-    with open(r'./reslut/ALL.txt', 'r', encoding='utf-8') as file:
-        auc_map={}
-        lines = file.readlines()
-        for line in lines:
-            line=line.split(',')
-            line[1]=float(line[1].strip())
-            line[2]=float(line[2].strip())
-            auc_map[line[0].strip()]=line[1:]
-    return auc_map
+# def read_auc():
+#     with open(r'./result/ALL.txt', 'r', encoding='utf-8') as file:
+#         auc_map={}
+#         lines = file.readlines()
+#         for line in lines:
+#             line=line.split(',')
+#             line[1]=float(line[1].strip())
+#             line[2]=float(line[2].strip())
+#             auc_map[line[0].strip()]=line[1:]
+#     return auc_map
 
-def save2excel(name):
-    filename=name
-    path=r"./Result".format(filename)
-    
+# def save2excel(name):
+#     filename=name
+#     path=r"./Result".format(filename)
+#     

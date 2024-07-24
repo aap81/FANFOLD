@@ -26,7 +26,7 @@ rcParams.update(config)
 def arg_parse():
     parser = argparse.ArgumentParser()
     parser.add_argument('-DS', help='Dataset', default='COX2') 
-    # AIDS BZR COX2 DHFR NCI1 
+    #   BZR COX2 DHFR NCI1 
     # ENZYMES PROTEINS COLLAB
     # IMDB-BINARY REDDIT-BINARY DD
     # Tox21_HSE Tox21_MMP Tox21_p53 Tox21_PPAR-gamma
@@ -86,7 +86,7 @@ print('Hidden_dim: {}'.format(args.hidden_dim))
 print('Seed: {}'.format(args.seed))
 print('num_epoch: {}'.format(args.num_epoch))
 print('hidden_dim: {}'.format(args.hidden_dim))
-%% Train TeaEncoder
+#%% Train TeaEncoder
 aucs=[]
 for trial in tqdm(range(args.num_trial), colour='red', dynamic_ncols=True, desc='[Total      trial]'):
     TeaEnmodel=make_gnn_model(args, hidden_dim=args.hidden_dim, out_dim=output_dim).to(device); 
@@ -239,9 +239,9 @@ for trial in tqdm(range(args.num_trial), colour='red', dynamic_ncols=True, desc=
         AUC = auc(fpr_ab, tpr_ab)
         aucs.append(AUC)
 #%% Save result
-auc_map=read_auc()
-auc_best=auc_map[args.DS]
+auc_best= np.max(aucs)
 avg_auc = np.mean(aucs)
 std_auc = np.std(aucs)
-print('{:.4f}±{:.4f}'.format(avg_auc*100, std_auc*100))
+print(f'Best AUC {auc_best}')
+print('Average AUC {:.4f}±{:.4f}'.format(avg_auc*100, std_auc*100))
 

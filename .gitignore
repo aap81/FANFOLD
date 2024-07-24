@@ -1,0 +1,3 @@
+data/
+modelpkl/*
+!modelpkl/.gitignore
